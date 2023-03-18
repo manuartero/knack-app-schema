@@ -1,0 +1,17 @@
+name: blue ball
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  blue-ball:
+    runs-on: ubuntu-latest
+
+    container:
+      image: node:16-alpine
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci --ignore-scripts
+      - run: npm run blue-ball
