@@ -21,9 +21,15 @@ export function getArgs() {
       type: "string",
       description: "Output path",
     })
+    .option("verbose", {
+      alias: "v",
+      type: "boolean",
+      description: "Verbose mode",
+    })
     .option("help", {
       alias: "h",
       type: "boolean",
+      default: false,
       description: "Show help",
     })
     .help()
