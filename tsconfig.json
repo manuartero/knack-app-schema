@@ -1,38 +1,14 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    /* modules */
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "baseUrl": "./src",
-    /* language */
-    "target": "ES2016",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
-    /* js support */
+    "noEmit": true,
     "allowJs": true,
-    /* Interop Constraints */
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    /* type checking */
-    "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    /* emit */
-    "declaration": true,
-    "outDir": "bin",
-    "sourceMap": true
+    "checkJs": true,
+    "target": "es6",
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   },
   "include": [
-    "src"
+    "./src"
   ],
-  "exclude": [
-    "bin",
-    "src/**/*.test.ts",
-    "node_modules",
-  ]
 }
