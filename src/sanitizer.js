@@ -4,7 +4,9 @@ export function sanitizer(log) {
     * @param {App.Schema} schema
     */
     removeDuplicates(schema) {
-      log.print(`Removing duplicates...`);
+      log.print(`Removing duplicates & creating the new schema...`);
+
+      const newSchema = { ...schema }
 
       const objectIds = new Set()
       const duplicatedObjects = []
@@ -15,29 +17,29 @@ export function sanitizer(log) {
        * @param {App.Schema['versions'][0]} version
        */
       const sanitizeVersion = (version) => {
-        version.objects.forEach(object => {
+        version.objects = version.objects.filter(object => {
           if (objectIds.has(object.key)) {
             log.debug(`Duplicate object detected: ${object.key}`);
-            duplicatedObjects.push({ ...object })
+            return false
           } else {
-            // ok
             objectIds.add(object.key)
+            return true
           }
         })
-
-        version.scenes.forEach(scene => {
+        version.scenes = version.scenes.filter(scene => {
           if (sceneIds.has(scene.key)) {
             log.debug(`Duplicate scene detected: ${scene.key}`);
-            duplicatedScenes.push({ ...scene })
+            return false
           } else {
             sceneIds.add(scene.key)
+            return true
           }
         })
       }
 
-      schema.versions.forEach(sanitizeVersion)
+      newSchema.versions.forEach(sanitizeVersion)
 
-      return { duplicatedObjects, duplicatedScenes }
+      return { duplicatedObjects, duplicatedScenes, newSchema }
     }
   }
 }

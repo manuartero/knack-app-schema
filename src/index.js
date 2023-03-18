@@ -2,7 +2,8 @@
 import { getArgs } from "./get-args";
 import { logger } from './console';
 import { sanitizer } from './sanitizer';
-import { fileReader } from './file-reader';
+import { fileUtils } from './file';
+
 /* disable system language for default messages */
 process.env.LANG = "en_US.UTF-8";
 
@@ -12,9 +13,8 @@ const log = logger(verbose);
 run({ file, output })
 
 function run({ file, output }) {
-  const schema = fileReader(log).readSchema(file);
-  const { duplicatedObjects, duplicatedScenes } = sanitizer(log).removeDuplicates(schema);
-  console.log(duplicatedObjects)
-  console.log(duplicatedScenes)
-  console.log(output)
+  const f = fileUtils(log);
+  const schema = f.readSchema(file);
+  const { newSchema } = sanitizer(log).removeDuplicates(schema);
+  f.createValidSchema(newSchema, output);
 }
