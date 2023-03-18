@@ -1,0 +1,24 @@
+{
+  "name": "knack-app-schema",
+  "version": "0.1.0",
+  "description": "Remove duplicates from Knak App schema",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "./bin/index.js",
+    "test": "jest ."
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuartero/knack-app-schema.git"
+  },
+  "author": "manutero.developer@gmail.com",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/manuartero/knack-app-schema/issues"
+  },
+  "homepage": "https://github.com/manuartero/knack-app-schema#readme"
+}
