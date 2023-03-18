@@ -27,10 +27,11 @@ export function fileUtils(log) {
       if (existsSync(output)) {
         unlinkSync(output);
       }
-      
+
       try {
         const outputJson = JSON.stringify(schema, null, 2)
         writeFileSync(output, outputJson, 'utf8');
+        log.print(`Done!`);
       }
       catch (err) {
         log.err(`Error writing file: ${output}`, err);

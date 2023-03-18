@@ -2,7 +2,7 @@
 import { getArgs } from "./get-args";
 import { logger } from './console';
 import { sanitizer } from './sanitizer';
-import { fileUtils } from './file';
+import { fileUtils } from './file-utils';
 
 /* disable system language for default messages */
 process.env.LANG = "en_US.UTF-8";
